@@ -1,0 +1,432 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+
+    <!-- Responsive layout -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>RSA Signup - 1024 & 3072 Bit</title>
+
+    <!-- Connect external CSS file -->
+    <link rel="stylesheet" href="sursa.css">
+
+    <!-- JSEncrypt Library -->
+    <script src="https://cdn.jsdelivr.net/npm/jsencrypt@latest/bin/jsencrypt.min.js"></script>
+</head>
+
+<body>
+
+    <!-- =========================================
+         MAIN CONTAINER
+    ========================================== -->
+    <div class="container">
+
+        <!-- =====================================
+             PAGE HEADER
+        ====================================== -->
+        <header class="header">
+
+            <h1>RSA SIGN UP</h1>
+
+            <p>
+                RSA Encryption and Decryption System
+            </p>
+
+            <div class="badge">
+                1024-bit &nbsp; | &nbsp; 3072-bit
+            </div>
+
+        </header>
+
+
+        <!-- =====================================
+             SIGNUP / ENROLLMENT FORM
+        ====================================== -->
+        <section class="card">
+
+            <h2>Enrollment / Signup Form</h2>
+
+            <p class="description">
+                Enter your information below and click
+                "Encrypt Information" to perform RSA
+                encryption and decryption.
+            </p>
+
+
+            <form id="signupForm">
+
+                <!-- Full Name -->
+                <div class="form-group">
+
+                    <label for="fullName">
+                        Full Name
+                    </label>
+
+                    <input
+                        type="text"
+                        id="fullName"
+                        value="Gilbert Lorenzana"
+                        required
+                    >
+
+                </div>
+
+
+                <!-- Date of Birth -->
+                <div class="form-group">
+
+                    <label for="dateOfBirth">
+                        Date of Birth
+                    </label>
+
+                    <input
+                        type="date"
+                        id="dateOfBirth"
+                        value="2005-08-24"
+                        required
+                    >
+
+                </div>
+
+
+                <!-- Year Level -->
+                <div class="form-group">
+
+                    <label for="yearLevel">
+                        Year Level
+                    </label>
+
+                    <select id="yearLevel" required>
+
+                        <option value="">
+                            Select Year Level
+                        </option>
+
+                        <option value="1st Year">
+                            1st Year
+                        </option>
+
+                        <option value="2nd Year">
+                            2nd Year
+                        </option>
+
+                        <option value="3rd Year" selected>
+                            3rd Year
+                        </option>
+
+                        <option value="4th Year">
+                            4th Year
+                        </option>
+
+                    </select>
+
+                </div>
+
+
+                <!-- Gender -->
+                <div class="form-group">
+
+                    <label for="gender">
+                        Gender
+                    </label>
+
+                    <select id="gender" required>
+
+                        <option value="">
+                            Select Gender
+                        </option>
+
+                        <option value="Male" selected>
+                            Male
+                        </option>
+
+                        <option value="Female">
+                            Female
+                        </option>
+
+                        <option value="Prefer not to say">
+                            Prefer not to say
+                        </option>
+
+                    </select>
+
+                </div>
+
+
+                <!-- Username -->
+                <div class="form-group">
+
+                    <label for="username">
+                        Username
+                    </label>
+
+                    <input
+                        type="text"
+                        id="username"
+                        value="Gilbert Lorenzana"
+                        required
+                    >
+
+                </div>
+
+
+                <!-- Password -->
+                <div class="form-group">
+
+                    <label for="password">
+                        Password
+                    </label>
+
+                    <input
+                        type="password"
+                        id="password"
+                        value="Gildark24"
+                        required
+                    >
+
+                </div>
+
+
+                <!-- Encrypt Button -->
+                <button
+                    type="submit"
+                    id="encryptButton"
+                    class="primary-btn"
+                >
+                    Encrypt Information
+                </button>
+
+            </form>
+
+        </section>
+
+
+        <!-- =====================================
+             ORIGINAL DATA
+        ====================================== -->
+        <section
+            id="originalSection"
+            class="card hidden"
+        >
+
+            <h2>Original Information</h2>
+
+            <div class="original-box">
+
+                <p>
+                    <strong>Full Name:</strong>
+                    <span id="originalName"></span>
+                </p>
+
+                <p>
+                    <strong>Date of Birth:</strong>
+                    <span id="originalDOB"></span>
+                </p>
+
+                <p>
+                    <strong>Year Level:</strong>
+                    <span id="originalYear"></span>
+                </p>
+
+                <p>
+                    <strong>Gender:</strong>
+                    <span id="originalGender"></span>
+                </p>
+
+                <p>
+                    <strong>Username:</strong>
+                    <span id="originalUsername"></span>
+                </p>
+
+                <p>
+                    <strong>Password:</strong>
+                    <span id="originalPassword"></span>
+                </p>
+
+            </div>
+
+        </section>
+
+
+        <!-- =====================================
+             RSA 1024-BIT RESULT
+        ====================================== -->
+        <section
+            id="rsa1024Section"
+            class="card hidden"
+        >
+
+            <div class="section-heading">
+
+                <h2>RSA 1024-bit</h2>
+
+                <span class="security-badge">
+                    1024 BIT
+                </span>
+
+            </div>
+
+
+            <!-- Public Key -->
+            <div class="result-box">
+
+                <h3>Public Key</h3>
+
+                <textarea
+                    id="publicKey1024"
+                    readonly
+                ></textarea>
+
+            </div>
+
+
+            <!-- Private Key -->
+            <div class="result-box">
+
+                <h3>Private Key</h3>
+
+                <textarea
+                    id="privateKey1024"
+                    readonly
+                ></textarea>
+
+            </div>
+
+
+            <!-- Encrypted Data -->
+            <div class="result-box encrypted">
+
+                <h3>Encrypted Information</h3>
+
+                <textarea
+                    id="encrypted1024"
+                    readonly
+                ></textarea>
+
+            </div>
+
+
+            <!-- Decrypted Data -->
+            <div class="result-box decrypted">
+
+                <h3>Decrypted Information</h3>
+
+                <textarea
+                    id="decrypted1024"
+                    readonly
+                ></textarea>
+
+            </div>
+
+
+            <!-- Status -->
+            <div
+                id="status1024"
+                class="status"
+            ></div>
+
+        </section>
+
+
+        <!-- =====================================
+             RSA 3072-BIT RESULT
+        ====================================== -->
+        <section
+            id="rsa3072Section"
+            class="card hidden"
+        >
+
+            <div class="section-heading">
+
+                <h2>RSA 3072-bit</h2>
+
+                <span class="security-badge">
+                    3072 BIT
+                </span>
+
+            </div>
+
+
+            <!-- Public Key -->
+            <div class="result-box">
+
+                <h3>Public Key</h3>
+
+                <textarea
+                    id="publicKey3072"
+                    readonly
+                ></textarea>
+
+            </div>
+
+
+            <!-- Private Key -->
+            <div class="result-box">
+
+                <h3>Private Key</h3>
+
+                <textarea
+                    id="privateKey3072"
+                    readonly
+                ></textarea>
+
+            </div>
+
+
+            <!-- Encrypted Data -->
+            <div class="result-box encrypted">
+
+                <h3>Encrypted Information</h3>
+
+                <textarea
+                    id="encrypted3072"
+                    readonly
+                ></textarea>
+
+            </div>
+
+
+            <!-- Decrypted Data -->
+            <div class="result-box decrypted">
+
+                <h3>Decrypted Information</h3>
+
+                <textarea
+                    id="decrypted3072"
+                    readonly
+                ></textarea>
+
+            </div>
+
+
+            <!-- Status -->
+            <div
+                id="status3072"
+                class="status"
+            ></div>
+
+        </section>
+
+
+        <!-- =====================================
+             FOOTER
+        ====================================== -->
+        <footer>
+
+            <p>
+                RSA Signup Activity &copy; 2026
+            </p>
+
+        </footer>
+
+    </div>
+
+
+    <!-- Connect JavaScript file -->
+    <script src="sursa.js"></script>
+
+</body>
+
+</html>
