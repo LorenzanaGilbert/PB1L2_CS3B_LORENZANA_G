@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+
+    <!-- Responsive design for different screen sizes -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>PostIt - Caption Posting System</title>
+
+    <!-- Connect the CSS file -->
+    <link rel="stylesheet" href="postit.css">
+
+    <!-- CryptoJS 4.2.0 CDN for encryption -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.2.0/crypto-js.min.js"></script>
+</head>
+
+<body>
+
+    <!-- Main page container -->
+    <div class="container">
+
+        <!-- ==============================
+             PAGE HEADER
+        =============================== -->
+        <header class="header">
+
+            <h1>POSTIT</h1>
+
+            <p>
+                Personal Caption Posting System
+            </p>
+
+        </header>
+
+
+        <!-- ==============================
+             USER INFORMATION
+             The user enters information
+             only one time.
+        =============================== -->
+        <section id="userSection" class="card">
+
+            <h2>Enter Your Information</h2>
+
+            <p class="instruction">
+                Please enter your information once before creating a post.
+            </p>
+
+
+            <!-- User information form -->
+            <form id="userForm">
+
+                <!-- Full Name -->
+                <div class="form-group">
+
+                    <label for="fullName">
+                        Full Name
+                    </label>
+
+                    <input
+                        type="text"
+                        id="fullName"
+                        value="Gilbert Lorenzana"
+                        placeholder="Enter your full name"
+                        required
+                    >
+
+                </div>
+
+
+                <!-- Date of Birth -->
+                <div class="form-group">
+
+                    <label for="dateOfBirth">
+                        Date of Birth
+                    </label>
+
+                    <input
+                        type="date"
+                        id="dateOfBirth"
+                        value="2005-08-24"
+                        required
+                    >
+
+                </div>
+
+
+                <!-- Year Level -->
+                <div class="form-group">
+
+                    <label for="yearLevel">
+                        Year Level
+                    </label>
+
+                    <select id="yearLevel" required>
+
+                        <option value="">
+                            Select Year Level
+                        </option>
+
+                        <option value="1st Year">
+                            1st Year
+                        </option>
+
+                        <option value="2nd Year">
+                            2nd Year
+                        </option>
+
+                        <option value="3rd Year" selected>
+                            3rd Year
+                        </option>
+
+                        <option value="4th Year">
+                            4th Year
+                        </option>
+
+                    </select>
+
+                </div>
+
+
+                <!-- Gender -->
+                <div class="form-group">
+
+                    <label for="gender">
+                        Gender
+                    </label>
+
+                    <select id="gender" required>
+
+                        <option value="">
+                            Select Gender
+                        </option>
+
+                        <option value="Male" selected>
+                            Male
+                        </option>
+
+                        <option value="Female">
+                            Female
+                        </option>
+
+                        <option value="Prefer not to say">
+                            Prefer not to say
+                        </option>
+
+                    </select>
+
+                </div>
+
+
+                <!-- Username -->
+                <div class="form-group">
+
+                    <label for="username">
+                        Username
+                    </label>
+
+                    <input
+                        type="text"
+                        id="username"
+                        value="Gilbert Lorenzana"
+                        placeholder="Enter username"
+                        required
+                    >
+
+                </div>
+
+
+                <!-- Password -->
+                <div class="form-group">
+
+                    <label for="password">
+                        Password
+                    </label>
+
+                    <input
+                        type="password"
+                        id="password"
+                        value="Gildark24"
+                        placeholder="Enter password"
+                        required
+                    >
+
+                </div>
+
+
+                <!-- Continue button -->
+                <button
+                    type="submit"
+                    class="primary-btn"
+                >
+                    Continue to PostIt
+                </button>
+
+            </form>
+
+        </section>
+
+
+        <!-- ==============================
+             POSTING SECTION
+        =============================== -->
+        <section
+            id="postSection"
+            class="card hidden"
+        >
+
+            <!-- User greeting -->
+            <div class="user-welcome">
+
+                <h2>
+                    Hello,
+                    <span id="displayName"></span>!
+                </h2>
+
+                <p>
+                    Create and share your caption below.
+                </p>
+
+            </div>
+
+
+            <!-- ==============================
+                 POST BOX
+            =============================== -->
+            <div class="post-box">
+
+                <label for="caption">
+                    Write Your Caption
+                </label>
+
+                <textarea
+                    id="caption"
+                    maxlength="500"
+                    rows="5"
+                    placeholder="What's on your mind?"
+                ></textarea>
+
+
+                <!-- Post button and character count -->
+                <div class="post-actions">
+
+                    <span id="characterCount">
+                        0 / 500
+                    </span>
+
+                    <button
+                        type="button"
+                        id="postButton"
+                        class="primary-btn"
+                    >
+                        POST
+                    </button>
+
+                </div>
+
+            </div>
+
+
+            <!-- ==============================
+                 THREAD OF POSTS
+            =============================== -->
+            <div class="thread-section">
+
+                <h2>Your Post Thread</h2>
+
+                <!-- JavaScript inserts posts here -->
+                <div id="postThread"></div>
+
+            </div>
+
+        </section>
+
+
+        <!-- ==============================
+             FOOTER
+        =============================== -->
+        <footer>
+
+            <p>
+                PostIt &copy; 2026
+            </p>
+
+        </footer>
+
+    </div>
+
+
+    <!-- Connect JavaScript file -->
+    <script src="postit.js"></script>
+
+</body>
+
+</html>
